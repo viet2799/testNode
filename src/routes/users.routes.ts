@@ -5,7 +5,7 @@ import { loginValidator } from '~/middlewares/users.middlewares'
 const app = express()
 const usersRoutes = express.Router()
 
-usersRoutes.post('/login', loginValidator, loginController)
+usersRoutes.post('/login',  loginController)
 
 usersRoutes.get('/aaaa', (req, res) => {
   res.json({
