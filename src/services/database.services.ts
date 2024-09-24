@@ -5,6 +5,8 @@ import User from '~/models/schemas/User.schema'
 const URL = process.env.REACT_APP_MONGO_URI
 const DB_NAME = process.env.REACT_APP_DB_NAME
 
+console.log('URL',URL);
+
 class DatabaseService {
   private client: MongoClient
   private dbName: Db
@@ -17,7 +19,7 @@ class DatabaseService {
       await this.dbName.command({ ping: 1 })
       console.log('Pinged your deployment. You successfully connected to MongoDB!')
     } finally {
-      await this.client.close()
+      // await this.client.close()
     }
   }
 
