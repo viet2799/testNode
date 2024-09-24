@@ -1,5 +1,6 @@
 import 'dotenv/config'
-import { Db, MongoClient } from 'mongodb'
+import { Collection, Db, MongoClient } from 'mongodb'
+import User from '~/models/schemas/User.schema'
 
 const URL = process.env.REACT_APP_MONGO_URI
 const DB_NAME = process.env.REACT_APP_DB_NAME
@@ -18,6 +19,10 @@ class DatabaseService {
     } finally {
       await this.client.close()
     }
+  }
+
+  get users(): Collection<User> {
+    return this.dbName.collection('Users')
   }
 }
 
