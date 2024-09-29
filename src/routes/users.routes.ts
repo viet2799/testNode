@@ -6,12 +6,13 @@ const app = express()
 const usersRoutes = express.Router()
 
 usersRoutes.post('/login', loginValidator, loginController)
-usersRoutes.post('/register', registerValidator, registerController)
 
-usersRoutes.get('/aaaa', (req, res) => {
-  res.json({
-    message: 'Hello, world!'
-  })
-})
+/**
+ * register new user
+ * Path : /register
+ * Method : POST
+ * Body : {email : string, password : string, confirm_password string, date_of_birth : Date}
+ */
+usersRoutes.post('/register', registerValidator, registerController)
 
 export default usersRoutes
