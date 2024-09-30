@@ -1,7 +1,9 @@
 import { Request, Response, NextFunction } from 'express'
+import { ParamsDictionary } from 'express-serve-static-core'
+import { RegisterReqBody } from '~/models/requests/User.request'
 import User from '~/models/schemas/User.schema'
-import dataabaseService from '~/services/database.services'
 import usersService from '~/services/users.service'
+
 export const loginController = async (req: Request, res: Response) => {
   try {
     console.log('THIS IS REQUEST', req?.body)
@@ -12,7 +14,7 @@ export const loginController = async (req: Request, res: Response) => {
   }
 }
 
-export const registerController = async (req: Request, res: Response) => {
+export const registerController = async (req: Request<ParamsDictionary, any, RegisterReqBody>, res: Response) => {
   const { email, password } = req.body
   try {
     usersService.register({ email, password })

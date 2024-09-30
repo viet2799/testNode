@@ -1,6 +1,7 @@
 import express from 'express'
 import { loginController, registerController } from '~/controllers/users.controller'
 import { loginValidator, registerValidator } from '~/middlewares/users.middlewares'
+import { validate } from '~/utils/validation'
 
 const app = express()
 const usersRoutes = express.Router()
@@ -13,6 +14,6 @@ usersRoutes.post('/login', loginValidator, loginController)
  * Method : POST
  * Body : {email : string, password : string, confirm_password string, date_of_birth : Date}
  */
-usersRoutes.post('/register', registerValidator, registerController)
+usersRoutes.post('/register',registerValidator, registerController)
 
 export default usersRoutes

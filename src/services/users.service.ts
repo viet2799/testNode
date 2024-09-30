@@ -12,6 +12,10 @@ class UsersService {
     const result = await dataabaseService.users.insertOne(new User({ email, password }))
     return result;
   }
+  async checkEmailExist(email: string) {
+    const user = await dataabaseService.users.findOne({ email })
+    return user
+  }
 }
 
 const usersService = new UsersService()
