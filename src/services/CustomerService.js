@@ -19,7 +19,15 @@ const addManyCustomerService = async (customers) => {
 };
 
 const getAllCustomersService = async (query) => {
-  const result = await Customer.find({});
+  console.log(query);
+  const { pageSize = 10, page = 1, name } = query;
+  const skip = (parseInt(page) - 1) * parseInt(pageSize);
+  const result = await Customer.find({
+    name: { $regex: ".*" + name + ".*" },
+  })
+    .skip(skip)
+    .limit(pageSize)
+    .exec();
   return result;
 };
 
