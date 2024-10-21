@@ -8,7 +8,6 @@ const connection = async () => {
       pass: process.env.DB_PASSWORD,
       dbName: process.env.DB_NAME,
     };
-    console.log("options", options);
     await mongoose.connect(process.env.DB_HOST, options);
   } catch (error) {
     console.log("Connect to database failed");
